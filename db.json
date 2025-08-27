@@ -17,6 +17,12 @@
       "title": "Exemplo de Empréstimo 3",
       "tax": 20.18,
       "term": "120"
+    },
+    {
+      "id": "60ca",
+      "title": "CDC Caixa",
+      "tax": 28.5,
+      "term": "60"
     }
   ]
 }
