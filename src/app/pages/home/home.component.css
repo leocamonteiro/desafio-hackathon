@@ -1,0 +1,16 @@
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    dsc-card:hover{
+        cursor: pointer;
+    }
+
+    dsc-card:active{
+        transform: scale(0.95);
+    }
+}
+
+
+  

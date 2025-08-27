@@ -1,0 +1,17 @@
+
+dsc-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; 
+  }
+
+.pages-container {
+    padding-top: 80px;
+    box-sizing: border-box;
+}
+
+
+
+  

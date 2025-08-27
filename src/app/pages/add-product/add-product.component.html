@@ -1,0 +1,66 @@
+<h1>Cadastrar Produtos</h1>
+<main>
+    <div class="container">
+        <div class="card">
+          <div class="card-row">
+            <div class="card-label"><span class="card-label__text">Cadastro de Produto:</span></div>
+          </div>
+      
+          <div class="card-row">
+            <div class="card-cell">
+              <dsc-card
+                [data]="{
+                  appearance: 'outlined',
+                  content: {
+                    template: customTemplate
+                  }
+                }">
+              </dsc-card>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Template do FORM de cadastro de produto: -->
+      <ng-template #customTemplate>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <dsc-input
+                formControlName="title"
+                [label]="'Nome do Produto:'"
+                [placeholder]="'Digite o nome do produto'"
+                >
+            </dsc-input>
+            
+            <dsc-input-currency
+              formControlName="tax"
+              [label]="'Taxa de juros anual:'"
+              [prefix]= "''"
+              [suffix]="'%a.a.'"
+              [customErrorMessages]="{
+                required: 'Preencha o valor!',
+                max: 'O máximo é 99,99'
+              }"
+              >
+            </dsc-input-currency>
+
+            <dsc-input
+                formControlName="term"
+                mask="000"
+                [label]="'Prazo máximo (em meses):'"
+                [placeholder]="'Informe o prazo máximo'"
+                >
+            </dsc-input>
+            
+            <dsc-button 
+                label="Salvar" (click)="onSubmit()">
+            </dsc-button>
+        </form>
+
+        <dsc-alert *ngIf="showAlert===true"
+          message="Produto adicionado com sucesso!"
+          showIcon="true"
+          variant="success">
+        </dsc-alert>
+
+      </ng-template>
+</main>
