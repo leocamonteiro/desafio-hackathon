@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "title": "Exemplo de Empréstimo 1",
+      "tax": 12,
+      "term": "48",
+      "id": "6bdf"
+    },
+    {
+      "id": "65f7",
+      "title": "Exemplo de Empréstimo 2",
+      "tax": 14.37,
+      "term": "72"
+    },
+    {
+      "id": "7a0f",
+      "title": "Exemplo de Empréstimo 3",
+      "tax": 20.18,
+      "term": "120"
+    },
+    {
+      "id": "60ca",
+      "title": "CDC Caixa",
+      "tax": 28.5,
+      "term": "60"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<!-- Header fixo com botão para abrir menu: -->
+<dsc-header
+  fixedInViewport="true"
+  label="Simulador de Empréstimos"
+  accessLevel="publico"
+  accessModifier="interno"
+  accessLevelDescription="#INTERNO.CAIXA"
+  toggleButton="true"
+  toggleButtonLabel="true"
+  opened="true"
+  brandFull="false"
+  (toggle)="toggleMenu($event)"
+>
+</dsc-header>
+
+<!-- Página dinâmica que mostrará o conteúdo conforme rota selecionada: -->
+<main [ngClass]="{'menu-open': sidenav?.opened}">
+  <div class="pages-container">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+
+<!-- Menu lateral -->
+<dsc-sidenav #sidenav
+  fixedInViewport='true'
+  fixedTopGap='88'
+  opened="false"
+  (click)="toggleMenu($event)"
+  [menu]="itemsMenu"
+>
+</dsc-sidenav>
+
+

@@ -1,0 +1,105 @@
+<h1>Simulador</h1>
+<main>
+    <div class="container">
+        <div class="card">
+          <div class="card-row">
+            <div class="card-label"><span class="card-label__text">Simulação de empréstimo:</span></div>
+          </div>
+      
+          <div class="card-row">
+            <div class="card-cell">
+              <dsc-card
+                [data]="{
+                  appearance: 'outlined',
+                  content: {
+                    template: simulTemplate
+                  }
+                }">
+              </dsc-card>
+            </div>
+          </div>
+          <br>
+          <div class="result-template">
+            <div class="card-cell">
+              <dsc-card
+                [data]="{
+                  appearance: 'outlined',
+                  content: {
+                    template: resultTemplate
+                  }
+                }">
+              </dsc-card>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Template do Formulário de Simulação -->
+      <ng-template #simulTemplate>
+        <form [formGroup]="simulationForm" (ngSubmit)="onSimulate(simulationForm.value)">
+          
+          <dsc-select
+            formControlName="product"
+            [label]="'Selecione o produto:'"
+            [placeholder]="'Nenhum produto selecionado'"
+            [options]="options">
+          </dsc-select>
+      
+          <dsc-input-currency
+            formControlName="amount"
+            [label]="'Valor do empréstimo:'"
+            >
+          </dsc-input-currency>
+      
+          <dsc-input
+            formControlName="term"
+            mask="000"
+            [label]="'Prazo:'"
+            [placeholder]="'Informe o prazo'"
+            [errorMessage]="'O prazo máximo é ' + selectedProduct?.term + ' meses.'">
+            >
+          </dsc-input>
+          <br>
+
+          <dsc-button label="Simular" type="submit" [disabled]="simulationForm.invalid"></dsc-button>
+
+        </form>
+      </ng-template>      
+
+      <!-- Template do resultado da Simulação -->
+      <ng-template #resultTemplate>
+        <!-- Diretiva ngIf para mostrar o Template apenas se existir resultado da simulação -->
+        <div *ngIf="resultadoSimulacao">
+          <h2>Resultado da Simulação</h2>
+          <div><span>Produto:</span> {{ resultadoSimulacao.produto }}</div>
+          <div><span>Valor solicitado:</span> R$ {{ resultadoSimulacao.valorSolicitado | currency:'BRL': '': '1.2-2':'pt-BR' }}</div>
+          <div><span>Prazo:</span> {{ resultadoSimulacao.prazo }} meses</div>
+          <div><span>Taxa efetiva mensal:</span> {{ resultadoSimulacao.taxaEfetivaMensal }}%</div>
+          <div><span>Parcela mensal:</span> R$ {{ resultadoSimulacao.parcelaMensal | currency:'BRL': '': '1.2-2':'pt-BR' }}</div>
+          <div><span>Valor total com juros:</span> R$ {{ resultadoSimulacao.valorTotalComJuros | currency:'BRL': '': '1.2-2':'pt-BR' }}</div>
+      
+          <div><h3>Memória de Cálculo:</h3></div>
+          <table>
+            <thead>
+              <tr>
+                <th>Mês</th>
+                <th>Juros (R$)</th>
+                <th>Amortização (R$)</th>
+                <th>Saldo (R$)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Diretiva ngFor para criar a tabela da Memória de Cálculo -->
+              <tr *ngFor="let item of resultadoSimulacao.memoriaCalculo">
+                <td>{{ item.mes }}</td>
+                <td>{{ item.juros | currency:'BRL': '': '1.2-2':'pt-BR' }}</td>
+                <td>{{ item.amortizacao | currency:'BRL': '': '1.2-2':'pt-BR' }}</td>
+                <td>{{ item.saldo | currency:'BRL': '': '1.2-2':'pt-BR' }}</td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+
+      </ng-template>
+</main>

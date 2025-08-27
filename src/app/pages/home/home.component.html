@@ -1,0 +1,65 @@
+<h1>Início</h1>
+<main>
+    <dsc-card
+    [data]="{
+      appearance: 'outlined',
+      interative: true,
+      title: {
+        variant: 'neutral',
+        text: 'Cadastrar Produtos',
+        avatar: {
+          icon: 'add',
+          size: 'medium'
+        }
+      },
+      content: {
+        text: 'Cadastre um novo produto de empréstimo.'
+      }
+    }"
+    (click)="cardClicked('add-product')">
+     </dsc-card>
+  
+    <dsc-card
+    [data]="{
+      appearance: 'outlined',
+      interative: true,
+      title: {
+        variant: 'neutral',
+        text: 'Listar Produtos',
+        avatar: {
+          icon: 'list',
+          size: 'medium'
+        }
+      },
+      content: {
+        text: 'Liste os produtos cadastrados.'
+      }
+    }"
+    (click)="cardClicked('product-list')">
+    </dsc-card>
+  
+    <dsc-card
+    [data]="{
+      appearance: 'outlined',
+      interative: true,
+      title: {
+        variant: 'neutral',
+        text: 'Simular Empréstimo',
+        avatar: {
+          icon: 'attach_money',
+          size: 'medium'
+        }
+      },
+      content: {
+        text: 'Simule um empréstimo com os parâmetros de um produto cadastrado.'
+      }
+    }"
+    (click)="cardClicked('simulation')">
+    </dsc-card>
+
+    <dsc-button label="Sobre"
+            (click)="abrirDialogNeutral()">
+    </dsc-button>
+
+
+</main>
